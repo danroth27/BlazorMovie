@@ -59,7 +59,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        Movie = await DB.Movie.FirstOrDefaultAsync(m => m.Id == Id);
+        Movie ??= await DB.Movie.FirstOrDefaultAsync(m => m.Id == Id);
 
         if (Movie is null)
         {
