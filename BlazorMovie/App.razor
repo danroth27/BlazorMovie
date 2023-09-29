@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BlazorMovie</title>
+    <title>@PageTitle - BlazorMovie</title>
     <base href="/" />
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
@@ -13,7 +13,7 @@
 </head>
 
 <body>
-
+    <CascadingValue Name="Title" Value="PageTitle">
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
             <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
@@ -26,6 +26,7 @@
             </LayoutView>
         </NotFound>
     </Router>
+    </CascadingValue>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
@@ -36,3 +37,8 @@
     <script src="_framework/blazor.web.js" suppress-error="BL9992"></script>
 </body>
 </html>
+
+@code {
+    IDictionary<string, object> viewData = new Dictionary<string, object>();
+    public string PageTitle { get; set; } = "";
+}

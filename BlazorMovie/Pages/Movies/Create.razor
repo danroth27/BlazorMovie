@@ -47,6 +47,14 @@
     [SupplyParameterFromForm]
     public Movie Movie { get; set; } = new();
 
+    [CascadingParameter]
+    public ModelBindingContext? BindingContext { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+    }
+
     // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
     public async Task AddMovie()
     {

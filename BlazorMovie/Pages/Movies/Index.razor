@@ -2,7 +2,7 @@
 @using Microsoft.AspNetCore.Components.QuickGrid
 @inject BlazorMovieContext DB
 
-<PageTitle>Index</PageTitle>
+@* <PageTitle>Index</PageTitle> *@
 
 <h1>Index</h1>
 
@@ -21,3 +21,14 @@
         <a href="@($"movies/delete?id={movie.Id}")">Delete</a>
     </TemplateColumn>
 </QuickGrid>
+
+@code {
+    [CascadingParameter(Name = "PageTitle")]
+    public string PageTitle { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        PageTitle = "Index";
+    }
+
+}
