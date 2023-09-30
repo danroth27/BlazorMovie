@@ -16,7 +16,7 @@ else
 {
     <div class="row">
         <div class="col-md-4">
-            <EditForm method="post" Model="Movie" OnValidSubmit="UpdateMovie">
+            <EditForm method="post" Model="Movie" OnValidSubmit="UpdateMovie" FormName="edit">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
                 <input type="hidden" name="Movie.Id" value="@Movie.Id" />
@@ -64,7 +64,7 @@ else
         if (Movie is null)
         {
             // Need a way to trigger a 404 here
-            // https://github.com/dotnet/aspnetcore/issues/48983#issuecomment-1607617945
+            // https://github.com/dotnet/aspnetcore/issues/45654
         }
     }
 
@@ -83,7 +83,7 @@ else
             if (!MovieExists(Movie!.Id))
             {
                 // Need a way to trigger a 404 here
-                // https://github.com/dotnet/aspnetcore/issues/48983#issuecomment-1607617945
+                // https://github.com/dotnet/aspnetcore/issues/45654
             }
             else
             {
@@ -91,7 +91,6 @@ else
             }
         }
 
-        // Currently navigating throws: https://github.com/dotnet/aspnetcore/issues/49143
         NavigationManager.NavigateTo("/movies");
     }
 

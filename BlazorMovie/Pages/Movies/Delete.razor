@@ -26,7 +26,7 @@
             <dd class="col-sm-10">@movie.Price</dd>
         </dl>
 
-        <EditForm method="post" Model="movie" OnValidSubmit="DeleteMovie">
+        <EditForm method="post" Model="movie" OnValidSubmit="DeleteMovie" FormName="delete">
             <button type="submit" class="btn btn-danger" disabled="@(movie is null)">Delete</button> |
             <a href="/movies">Back to List</a>
         </EditForm>
@@ -46,7 +46,7 @@
         if (movie is null)
         {
             // Need a way to trigger a 404 here
-            // https://github.com/dotnet/aspnetcore/issues/48983#issuecomment-1607617945
+            // https://github.com/dotnet/aspnetcore/issues/45654
         }
     }
 
@@ -54,8 +54,6 @@
     {
         DB.Movie.Remove(movie!);
         await DB.SaveChangesAsync();
-
-        // Currently navigating throws: https://github.com/dotnet/aspnetcore/issues/49143
         NavigationManager.NavigateTo("/movies");
     }
 }

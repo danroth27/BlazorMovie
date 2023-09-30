@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <EditForm method="post" Model="Movie" OnValidSubmit="AddMovie">
+        <EditForm method="post" Model="Movie" OnValidSubmit="AddMovie" FormName="create">
             <DataAnnotationsValidator />
             <ValidationSummary class="text-danger" />
             <div class="mb-3">
@@ -52,8 +52,6 @@
     {
         DB.Movie.Add(Movie);
         await DB.SaveChangesAsync();
-
-        // Currently this throws: https://github.com/dotnet/aspnetcore/issues/49143
         NavigationManager.NavigateTo("/movies");
     }
 }
